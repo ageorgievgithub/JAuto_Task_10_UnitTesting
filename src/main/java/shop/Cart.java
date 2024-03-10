@@ -1,6 +1,7 @@
 package shop;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Cart {
@@ -23,16 +24,17 @@ public class Cart {
 
     public void addRealItem(RealItem item) {
         realItems.add(item);
-        total += item.getPrice() + item.getPrice()*TAX;
+        total += item.getPrice() + item.getPrice() * TAX;
     }
 
     public void deleteRealItem(RealItem item) {
         realItems.remove(item);
+        total -= item.getPrice() + item.getPrice() * TAX;
     }
 
     public void addVirtualItem(VirtualItem item) {
         virtualItems.add(item);
-        total += item.getPrice() + item.getPrice()*TAX;
+        total += item.getPrice() + item.getPrice() * TAX;
     }
 
     public void deleteVirtualItem(VirtualItem item) {
@@ -50,5 +52,10 @@ public class Cart {
 
     public double getTotalPrice() {
         return total;
+    }
+
+
+    public Collection<RealItem> getRealItems() {
+        return realItems != null ? realItems : new ArrayList<>();
     }
 }
