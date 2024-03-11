@@ -27,7 +27,6 @@ class JsonParserTests {
         };
     }
 
-
     @ParameterizedTest
     @DisplayName("Test reading from different files")
     @ValueSource(strings = {
